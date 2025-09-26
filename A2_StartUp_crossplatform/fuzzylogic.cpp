@@ -12,7 +12,21 @@ void initFuzzyRules(fuzzy_system_rec *fl) {
       no_of_theta_rules = 25;
    
    int i;
+   const int inputCount = 0;
+   const int inCount = 0;
+   const int outCount = 0;
+
 	
+
+   typedef enum {in_theta, in_theta_dot, in_x, in_x_dot, numInputs} ID; // input id
+   typedef enum {in_nl, in_ns, in_ze, in_ps, in_pl, inCount} IN; 
+   typedef enum {out_nl, out_ns, out_ze, out_ps, out_pl, outCount} OUT;
+
+
+
+
+
+
 //---------------------------------------------------------------------------- 	
 //THETA vs. THETA_DOT	
 //   
@@ -48,7 +62,7 @@ void initFuzzyRules(fuzzy_system_rec *fl) {
 }
 
 
-void initMembershipFunctions(fuzzy_system_rec *fl) {
+void initMembershipFunctions(fuzzy_system_rec *fl) { //
 	
    /* The X membership functions */
 
