@@ -37,6 +37,49 @@ void initFuzzyRules(fuzzy_system_rec *fl)
    fl->rules[2].inp_fuzzy_set[1] = in_pl;
    fl->rules[2].out_fuzzy_set = out_pl;
 
+   fl->rules[3].inp_fuzzy_set[0] = in_ns;
+   fl->rules[3].inp_fuzzy_set[1] = in_ps;
+   fl->rules[3].out_fuzzy_set = out_ns;
+
+   fl->rules[4].inp_fuzzy_set[0] = in_ps;
+   fl->rules[4].inp_fuzzy_set[1] = in_ps;
+   fl->rules[4].out_fuzzy_set = out_pm;
+
+   fl->rules[5].inp_fuzzy_set[0] = in_nl;
+   fl->rules[5].inp_fuzzy_set[1] = in_ze;
+   fl->rules[5].out_fuzzy_set = out_nm;
+
+   fl->rules[6].inp_fuzzy_set[0] = in_ze;
+   fl->rules[6].inp_fuzzy_set[1] = in_ze;
+   fl->rules[6].out_fuzzy_set = out_ze;
+
+   fl->rules[7].inp_fuzzy_set[0] = in_pl;
+   fl->rules[7].inp_fuzzy_set[1] = in_ze;
+   fl->rules[7].out_fuzzy_set = out_pm;
+
+   fl->rules[8].inp_fuzzy_set[0] = in_ns;
+   fl->rules[8].inp_fuzzy_set[1] = in_ns;
+   fl->rules[8].out_fuzzy_set = out_nm;
+
+   fl->rules[9].inp_fuzzy_set[0] = in_ps;
+   fl->rules[9].inp_fuzzy_set[1] = in_ns;
+   fl->rules[9].out_fuzzy_set = out_ps;
+
+   fl->rules[10].inp_fuzzy_set[0] = in_nl;
+   fl->rules[10].inp_fuzzy_set[1] = in_nl;
+   fl->rules[10].out_fuzzy_set = out_nl;
+
+   fl->rules[11].inp_fuzzy_set[0] = in_ze;
+   fl->rules[11].inp_fuzzy_set[1] = in_nl;
+   fl->rules[11].out_fuzzy_set = out_ns;
+
+   fl->rules[12].inp_fuzzy_set[0] = in_pl;
+   fl->rules[12].inp_fuzzy_set[1] = in_nl;
+   fl->rules[12].out_fuzzy_set = out_ps;
+
+
+
+
    //----------------------------------------------------------------------------
    // X vs. X_DOT
    //
