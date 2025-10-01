@@ -52,6 +52,9 @@ using namespace std;
 
 /// Global Variables ///////////////////////////////////////////////////////////////////////
 
+float maxThetaDot, maxXDot = -100;
+float minThetaDot, minXDot = 100;
+
 bool DEBUG_MODE = false;
 float WORLD_MAXX, WORLD_MAXY;
 int fieldX1, fieldY1, fieldX2, fieldY2; // playing field boundaries
@@ -488,6 +491,23 @@ void runInvertedPendulum()
 				cout << "prevState.x = " << prevState.x << endl;
 				cout << "prevState.x_dot = " << prevState.x_dot << endl;
 				cout << "prevState.x_double_dot = " << prevState.x_double_dot << endl;
+
+				if (prevState.angle_dot > maxThetaDot)
+				{
+					maxThetaDot = prevState.angle_dot;
+				}
+				if (prevState.angle_dot < minThetaDot)
+				{
+					minThetaDot = prevState.angle_dot;
+				}
+				if (prevState.x_dot > maxXDot)
+				{
+					maxXDot = prevState.x_dot;
+				}
+				if (prevState.x_dot < minXDot)
+				{
+					minXDot = prevState.x_dot;
+				}
 			}
 
 			prevState.x = newState.x;
@@ -564,6 +584,13 @@ void runInvertedPendulum()
 				// do nothing
 			}
 #endif
+		}
+		if (DEBUG_MODE)
+		{
+			cout << "Min X Dot: " << minXDot << endl;
+			cout << "Max X Dot: " << maxXDot << endl;
+			cout << "Min Theta Dot: " << minThetaDot << endl;
+			cout << "Max Theta Dot: " << maxThetaDot << endl;
 		}
 	}
 
@@ -782,7 +809,10 @@ int main(void)
 
 	int graphDriver = 0, graphMode = 0;
 	initgraph(&graphDriver, &graphMode, "", 800, 600); // Start Window
-
+	// Spawn window in top right instead of top left
+	HWND hwnd = GetForegroundWindow();
+	int screenWidth = GetSystemMetrics(SM_CXSCREEN);
+	SetWindowPos(hwnd, HWND_TOP, screenWidth - 800, 0, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
 #endif
 
 	clearDataSet();
