@@ -52,10 +52,10 @@ using namespace std;
 
 /// Global Variables ///////////////////////////////////////////////////////////////////////
 
-float maxThetaDot, maxXDot = -100;
-float minThetaDot, minXDot = 100;
+float maxThetaDot, maxXDot, maxTheta, maxINPUT_X, maxINPUT_Y = -100;
+float minThetaDot, minXDot, minTheta, minINPUT_X, minINPUT_Y = 100;
 
-bool DEBUG_MODE = false;
+bool DEBUG_MODE = true;
 float WORLD_MAXX, WORLD_MAXY;
 int fieldX1, fieldY1, fieldX2, fieldY2; // playing field boundaries
 BoundaryType worldBoundary, deviceBoundary;
@@ -508,6 +508,22 @@ void runInvertedPendulum()
 				{
 					minXDot = prevState.x_dot;
 				}
+				if (INPUT_X > maxINPUT_X)
+				{
+					maxINPUT_X = INPUT_X;
+				}
+				if (INPUT_X < minINPUT_X)
+				{
+					minINPUT_X = INPUT_X;
+				}
+				if (INPUT_Y > maxINPUT_Y)
+				{
+					maxINPUT_Y = INPUT_Y;
+				}
+				if (INPUT_Y < minINPUT_Y)
+				{
+					minINPUT_Y = INPUT_Y;
+				}
 			}
 
 			prevState.x = newState.x;
@@ -587,6 +603,13 @@ void runInvertedPendulum()
 		}
 		if (DEBUG_MODE)
 		{
+			cout << "Min INPUT_X: " << minINPUT_X << endl;
+			cout << "Max INPUT_X: " << maxINPUT_X << endl;
+			cout << "Min INPUT_Y: " << minINPUT_Y << endl;
+			cout << "Max INPUT_Y: " << maxINPUT_Y << "\n\n"
+				 << endl;
+			cout << "Min Theta: " << minTheta << endl;
+			cout << "Max Theta: " << maxTheta << endl;
 			cout << "Min X Dot: " << minXDot << endl;
 			cout << "Max X Dot: " << maxXDot << endl;
 			cout << "Min Theta Dot: " << minThetaDot << endl;
