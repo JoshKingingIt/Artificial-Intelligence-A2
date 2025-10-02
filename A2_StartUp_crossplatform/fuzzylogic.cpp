@@ -70,100 +70,51 @@ void initFuzzyRules(fuzzy_system_rec *fl)
    fl->rules[12].inp_fuzzy_set[1] = in_nl;
    fl->rules[12].out_fuzzy_set = out_ps;
 
-   // fl->rules[25+24].out_fuzzy_set = out_nl;
    return;
 }
 
 void initMembershipFunctions(fuzzy_system_rec *fl)
 {
+   fl->inp_mem_fns[INPUT_X][in_nl] = init_trapz(-3.0, -1.8, 0.0, 0.0, left_trapezoid);
+   fl->inp_mem_fns[INPUT_X][in_ns] = init_trapz(-3.0, -1.8, -1.0, -0.2, regular_trapezoid);
+   fl->inp_mem_fns[INPUT_X][in_ze] = init_trapz(-1.0, -0.2, 0.2, 1.0, regular_trapezoid);
+   fl->inp_mem_fns[INPUT_X][in_ps] = init_trapz(0.2, 1.0, 1.8, 3.0, regular_trapezoid);
+   fl->inp_mem_fns[INPUT_X][in_pl] = init_trapz(1.8, 3.0, 0, 0, right_trapezoid);
 
-   // Sample routines only, to give you an idea of what to do here
-   //~ fl->inp_mem_fns[in_x][in_neg] = init_trapz (-1.5,-0.5,0,0,left_trapezoid);
-   //~ fl->inp_mem_fns[in_x][in_ze] = init_trapz (-1.5,-0.5,0.5,1.5,regular_trapezoid);
-   //~ fl->inp_mem_fns[in_x][in_pos] = init_trapz (0.5,1.5,0,0,right_trapezoid);
+   fl->inp_mem_fns[INPUT_Y][in_nl] = init_trapz(-2.0, -1.4, 0.0, 0.0, left_trapezoid);
+   fl->inp_mem_fns[INPUT_Y][in_ns] = init_trapz(-2.0, -1.4, -0.8, -0.2, regular_trapezoid);
+   fl->inp_mem_fns[INPUT_Y][in_ze] = init_trapz(-0.8, -0.2, 0.2, 0.8, regular_trapezoid);
+   fl->inp_mem_fns[INPUT_Y][in_ps] = init_trapz(0.2, 0.8, 1.4, 2.0, regular_trapezoid);
+   fl->inp_mem_fns[INPUT_Y][in_pl] = init_trapz(1.4, 2.0, 0, 0, right_trapezoid);
 
-   /* The X membership functions */
-   // Range [-2.4, 2.4]
-//    fl->inp_mem_fns[in_x][in_nl] = init_trapz(-1.0, -0.6, 0.0, 0.0, left_trapezoid);
-//    fl->inp_mem_fns[in_x][in_ns] = init_trapz(-1.0, -0.6, -0.3, -0.1, regular_trapezoid);
-//    fl->inp_mem_fns[in_x][in_ze] = init_trapz(-0.3, -0.1, 0.1, 0.3, regular_trapezoid);
-//    fl->inp_mem_fns[in_x][in_ps] = init_trapz(0.1, 0.3, 0.6, 1.0, regular_trapezoid);
-//    fl->inp_mem_fns[in_x][in_pl] = init_trapz(0.6, 1.0, 1.35, 1.35, right_trapezoid);
-
-//    /* The X dot membership functions */
-//    fl->inp_mem_fns[in_x_dot][in_nl] = init_trapz(-1.0, -0.6, 0.0, 0.0, left_trapezoid);
-//    fl->inp_mem_fns[in_x_dot][in_ns] = init_trapz(-1.0, -0.6, -0.3, -0.1, regular_trapezoid);
-//    fl->inp_mem_fns[in_x_dot][in_ze] = init_trapz(-0.3, -0.1, 0.1, 0.3, regular_trapezoid);
-//    fl->inp_mem_fns[in_x_dot][in_ps] = init_trapz(0.1, 0.3, 0.6, 1.0, regular_trapezoid);
-//    fl->inp_mem_fns[in_x_dot][in_pl] = init_trapz(0.6, 1.0, 1.35, 1.35, right_trapezoid);
-
-//    /* The theta membership functions */
-//    fl->inp_mem_fns[in_theta][in_nl] = init_trapz(-1.0, -0.6, 0.0, 0.0, left_trapezoid);
-//    fl->inp_mem_fns[in_theta][in_ns] = init_trapz(-1.0, -0.6, -0.3, -0.1, regular_trapezoid);
-//    fl->inp_mem_fns[in_theta][in_ze] = init_trapz(-0.3, -0.1, 0.1, 0.3, regular_trapezoid);
-//   fl->inp_mem_fns[in_theta][in_ps] = init_trapz(0.1, 0.3, 0.6, 1.0, regular_trapezoid);
-//    fl->inp_mem_fns[in_theta][in_pl] = init_trapz(0.6, 1.0, 1.35, 1.35, right_trapezoid);
-
-//   /*The theta dot membership functions */
-//    fl->inp_mem_fns[in_theta_dot][in_nl] =      init_trapz(-1.0, -0.6, 0.0, 0.0, left_trapezoid);
-//    fl->inp_mem_fns[in_theta_dot][in_ns] = init_trapz(-1.0, -0.6, -0.3, -0.1, regular_trapezoid);
-//    fl->inp_mem_fns[in_theta_dot][in_ze] =   init_trapz(-0.3, -0.1, 0.1, 0.3, regular_trapezoid);
-//   fl->inp_mem_fns[in_theta_dot][in_ps] =      init_trapz(0.1, 0.3, 0.6, 1.0, regular_trapezoid);
-//    fl->inp_mem_fns[in_theta_dot][in_pl] =     init_trapz(0.6, 1.0, 1.35, 1.35, right_trapezoid);
-
-
-
-fl->inp_mem_fns[INPUT_X][in_nl] =      init_trapz(-1.0, -0.6, 0.0, 0.0, left_trapezoid);
-fl->inp_mem_fns[INPUT_X][in_ns] = init_trapz(-1.0, -0.6, -0.3, -0.1, regular_trapezoid);
-fl->inp_mem_fns[INPUT_X][in_ze] =   init_trapz(-0.3, -0.1, 0.1, 0.3, regular_trapezoid);
-fl->inp_mem_fns[INPUT_X][in_ps] =     init_trapz(0.1, 0.3, 0.6, 1.0, regular_trapezoid);
-fl->inp_mem_fns[INPUT_X][in_pl] =     init_trapz(0.6, 1.0, 1.35, 1.35, right_trapezoid);
-
-fl->inp_mem_fns[INPUT_Y][in_nl] =       init_trapz(-1.0, -0.6, 0.0, 0.0, left_trapezoid);
-fl->inp_mem_fns[INPUT_Y][in_ns] =  init_trapz(-1.0, -0.6, -0.3, -0.1, regular_trapezoid);
-fl->inp_mem_fns[INPUT_Y][in_ze] =    init_trapz(-0.3, -0.1, 0.1, 0.3, regular_trapezoid);
-fl->inp_mem_fns[INPUT_Y][in_ps] =      init_trapz(0.1, 0.3, 0.6, 1.0, regular_trapezoid);
-fl->inp_mem_fns[INPUT_Y][in_pl] =      init_trapz(0.6, 1.0, 1.35, 1.35, right_trapezoid);
-
-
-
-
-
-
-
-
-
-
-
-  return;
+   return;
 }
 
 void initFuzzySystem(fuzzy_system_rec *fl)
 {
-
    // Note: The settings of these parameters will depend upon your fuzzy system design
    fl->no_of_inputs = 2; /* Inputs are handled 2 at a time only */
    fl->no_of_rules = 13;
    fl->no_of_inp_regions = 5;
-   fl->no_of_outputs = 13;
+   fl->no_of_outputs = 9;
 
-   coefficient_A = 1.64;
-   coefficient_B = 0.19;
-   coefficient_C = 1.49;
-   coefficient_D = 0.43;
+   coefficient_A = 6.56;
+   coefficient_B = 0.76;
+   coefficient_C = 5.96;
+   coefficient_D = 1.72;
 
    // Sample only
    //  fl->output_values [out_nvl]=-95.0;
    //  fl->output_values [out_nl] = -85.0;
-   fl->output_values[out_nvl] = -200.0;
-   fl->output_values[out_nl] = -125.0;
-   fl->output_values[out_nm] = -75.0;
-   fl->output_values[out_ns] = -25.0;
+   fl->output_values[out_nvl] = -1000.0;
+   fl->output_values[out_nl] = -800.0;
+   fl->output_values[out_nm] = -400.0;
+   fl->output_values[out_ns] = -200.0;
    fl->output_values[out_ze] = 0.0;
-   fl->output_values[out_ps] = 25.0;
-   fl->output_values[out_pm] = 75.0;
-   fl->output_values[out_pl] = 125.0;
-   fl->output_values[out_pvl] = 200.0;
+   fl->output_values[out_ps] = 200.0;
+   fl->output_values[out_pm] = 400.0;
+   fl->output_values[out_pl] = 800.0;
+   fl->output_values[out_pvl] = 1000.0;
 
    fl->rules = (rule *)malloc((size_t)(fl->no_of_rules * sizeof(rule)));
    initFuzzyRules(fl);
@@ -292,7 +243,7 @@ float fuzzy_system(float inputs[], fuzzy_system_rec fz)
    cout << "Weight: " << weight << endl;
    cout << "Sum 2: " << sum2 << endl;
    cout << "F value: " << (sum1 / sum2) << " \n";
-   return (sum1 / sum2) * 20;
+   return (sum1 / sum2);
 } /* end fuzzy_system  */
 
 //////////////////////////////////////////////////////////////////////////////
