@@ -599,10 +599,6 @@ void runInvertedPendulum()
 			{
 				// do nothing
 			}
-#endif
-		}
-		if (DEBUG_MODE)
-		{
 			cout << "Min INPUT_X: " << minINPUT_X << endl;
 			cout << "Max INPUT_X: " << maxINPUT_X << endl;
 			cout << "Min INPUT_Y: " << minINPUT_Y << endl;
@@ -614,7 +610,24 @@ void runInvertedPendulum()
 			cout << "Max X Dot: " << maxXDot << endl;
 			cout << "Min Theta Dot: " << minThetaDot << endl;
 			cout << "Max Theta Dot: " << maxThetaDot << endl;
+#endif
 		}
+
+		
+		// if (DEBUG_MODE)
+		// {
+		// 	cout << "Min INPUT_X: " << minINPUT_X << endl;
+		// 	cout << "Max INPUT_X: " << maxINPUT_X << endl;
+		// 	cout << "Min INPUT_Y: " << minINPUT_Y << endl;
+		// 	cout << "Max INPUT_Y: " << maxINPUT_Y << "\n\n"
+		// 		 << endl;
+		// 	cout << "Min Theta: " << minTheta << endl;
+		// 	cout << "Max Theta: " << maxTheta << endl;
+		// 	cout << "Min X Dot: " << minXDot << endl;
+		// 	cout << "Max X Dot: " << maxXDot << endl;
+		// 	cout << "Min Theta Dot: " << minThetaDot << endl;
+		// 	cout << "Max Theta Dot: " << maxThetaDot << endl;
+		// }
 	}
 
 	// 2) Enable this only after your fuzzy system has been completed already.
