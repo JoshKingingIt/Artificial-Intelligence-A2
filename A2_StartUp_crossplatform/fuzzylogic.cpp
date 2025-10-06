@@ -75,17 +75,17 @@ void initFuzzyRules(fuzzy_system_rec *fl)
 
 void initMembershipFunctions(fuzzy_system_rec *fl)
 {
-   fl->inp_mem_fns[INPUT_X][in_nl] = init_trapz(-3.0, -1.8, 0.0, 0.0, left_trapezoid);
-   fl->inp_mem_fns[INPUT_X][in_ns] = init_trapz(-3.0, -1.8, -1.0, -0.2, regular_trapezoid);
-   fl->inp_mem_fns[INPUT_X][in_ze] = init_trapz(-1.0, -0.2, 0.2, 1.0, regular_trapezoid);
-   fl->inp_mem_fns[INPUT_X][in_ps] = init_trapz(0.2, 1.0, 1.8, 3.0, regular_trapezoid);
-   fl->inp_mem_fns[INPUT_X][in_pl] = init_trapz(1.8, 3.0, 0, 0, right_trapezoid);
+   fl->inp_mem_fns[INPUT_X][in_nl] = init_trapz(-2.0, -1.0, 0.0, 0.0, left_trapezoid);
+   fl->inp_mem_fns[INPUT_X][in_ns] = init_trapz(-2.0, -1.0, -1.0, 0, regular_trapezoid);
+   fl->inp_mem_fns[INPUT_X][in_ze] = init_trapz(-1, 0, 0, 1.0, regular_trapezoid);
+   fl->inp_mem_fns[INPUT_X][in_ps] = init_trapz(0, 1.0, 1.0, 2.0, regular_trapezoid);
+   fl->inp_mem_fns[INPUT_X][in_pl] = init_trapz(1.0, 2.0, 0, 0, right_trapezoid);
 
-   fl->inp_mem_fns[INPUT_Y][in_nl] = init_trapz(-2.0, -1.4, 0.0, 0.0, left_trapezoid);
-   fl->inp_mem_fns[INPUT_Y][in_ns] = init_trapz(-2.0, -1.4, -0.8, -0.2, regular_trapezoid);
-   fl->inp_mem_fns[INPUT_Y][in_ze] = init_trapz(-0.8, -0.2, 0.2, 0.8, regular_trapezoid);
-   fl->inp_mem_fns[INPUT_Y][in_ps] = init_trapz(0.2, 0.8, 1.4, 2.0, regular_trapezoid);
-   fl->inp_mem_fns[INPUT_Y][in_pl] = init_trapz(1.4, 2.0, 0, 0, right_trapezoid);
+   fl->inp_mem_fns[INPUT_Y][in_nl] = init_trapz(-2.0, -1.0, 0.0, 0.0, left_trapezoid);
+   fl->inp_mem_fns[INPUT_Y][in_ns] = init_trapz(-2.0, -1.0, -1.0, 0, regular_trapezoid);
+   fl->inp_mem_fns[INPUT_Y][in_ze] = init_trapz(-1, 0, 0, 1.0, regular_trapezoid);
+   fl->inp_mem_fns[INPUT_Y][in_ps] = init_trapz(0, 1.0, 1.0, 2.0, regular_trapezoid);
+   fl->inp_mem_fns[INPUT_Y][in_pl] = init_trapz(1.0, 2.0, 0, 0, right_trapezoid);
 
    return;
 }
@@ -103,16 +103,13 @@ void initFuzzySystem(fuzzy_system_rec *fl)
    coefficient_C = 5.96;
    coefficient_D = 1.72;
 
-   // Sample only
-   //  fl->output_values [out_nvl]=-95.0;
-   //  fl->output_values [out_nl] = -85.0;
    fl->output_values[out_nvl] = -1000.0;
    fl->output_values[out_nl] = -800.0;
-   fl->output_values[out_nm] = -400.0;
-   fl->output_values[out_ns] = -200.0;
+   fl->output_values[out_nm] = -200.0;
+   fl->output_values[out_ns] = -100.0;
    fl->output_values[out_ze] = 0.0;
-   fl->output_values[out_ps] = 200.0;
-   fl->output_values[out_pm] = 400.0;
+   fl->output_values[out_ps] = 100.0;
+   fl->output_values[out_pm] = 200.0;
    fl->output_values[out_pl] = 800.0;
    fl->output_values[out_pvl] = 1000.0;
 
@@ -240,9 +237,6 @@ float fuzzy_system(float inputs[], fuzzy_system_rec fz)
       //~ exit(1);
       return 0.0;
    }
-   cout << "Weight: " << weight << endl;
-   cout << "Sum 2: " << sum2 << endl;
-   cout << "F value: " << (sum1 / sum2) << " \n";
    return (sum1 / sum2);
 } /* end fuzzy_system  */
 

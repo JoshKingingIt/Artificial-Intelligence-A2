@@ -616,21 +616,6 @@ void runInvertedPendulum()
 			}
 #endif
 		}
-
-		// if (DEBUG_MODE)
-		// {
-		// 	cout << "Min INPUT_X: " << minINPUT_X << endl;
-		// 	cout << "Max INPUT_X: " << maxINPUT_X << endl;
-		// 	cout << "Min INPUT_Y: " << minINPUT_Y << endl;
-		// 	cout << "Max INPUT_Y: " << maxINPUT_Y << "\n\n"
-		// 		 << endl;
-		// 	cout << "Min Theta: " << minTheta << endl;
-		// 	cout << "Max Theta: " << maxTheta << endl;
-		// 	cout << "Min X Dot: " << minXDot << endl;
-		// 	cout << "Max X Dot: " << maxXDot << endl;
-		// 	cout << "Min Theta Dot: " << minThetaDot << endl;
-		// 	cout << "Max Theta Dot: " << maxThetaDot << endl;
-		// }
 	}
 
 	// 2) Enable this only after your fuzzy system has been completed already.
@@ -860,10 +845,10 @@ int main(void)
 		runInvertedPendulum();
 
 		// 3) Enable this only after your fuzzy system has been completed already.
-		// generateControlSurface_Angle_vs_Angle_Dot();
+		generateControlSurface_Angle_vs_Angle_Dot();
 
 		// 4) Enable this only after your fuzzy system has been completed already.
-		// saveDataToFile("data_angle_vs_angle_dot.txt");
+		saveDataToFile("data_angle_vs_angle_dot.txt");
 	}
 	catch (...)
 	{
